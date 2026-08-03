@@ -6,7 +6,7 @@ import { useSectionColor } from "@/components/section-color-provider";
 const STEPS = [
   {
     title: "Free Design Consult",
-    body: "We measure your roofline and walk your property to plan a clean, custom LED layout — no cost, no obligation.",
+    body: "We measure your roofline and walk your property to plan a clean, custom LED layout - no cost, no obligation.",
   },
   {
     title: "Professional Install",
@@ -14,7 +14,7 @@ const STEPS = [
   },
   {
     title: "Color It From Your Phone",
-    body: "Pick from millions of colors and preset shows in our app — Christmas, Halloween, game day, birthdays, or every day.",
+    body: "Pick from millions of colors and preset shows in our app - Christmas, Halloween, game day, birthdays, or every day.",
   },
   {
     title: "We Maintain It",

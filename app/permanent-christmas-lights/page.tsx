@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { TreePine, Ghost, Heart, Trophy } from "lucide-react";
 import { FaqAccordion } from "@/components/faq-accordion";
 
 const TITLE = "Permanent Christmas Lights in Utah | Knox Lighting";
@@ -13,33 +15,41 @@ export const metadata: Metadata = {
   twitter: { title: TITLE, description: DESCRIPTION },
 };
 
-const RED = "#dc2626";
-const GOLD = "#b45309";
-const GREEN = "#15803d";
-const BLUE = "#1d4ed8";
-const PURPLE = "#7e22ce";
+type Theme = { color: string; glow: string; text: string };
+
+const RED: Theme = { color: "#ff4136", glow: "#ff7a70", text: "#dc2626" };
+const GOLD: Theme = { color: "#ffc93c", glow: "#ffdd85", text: "#b45309" };
+const GREEN: Theme = { color: "#2ecc71", glow: "#6fe3a4", text: "#15803d" };
+const BLUE: Theme = { color: "#3b82f6", glow: "#7fabff", text: "#1d4ed8" };
+const PURPLE: Theme = { color: "#a855f7", glow: "#cf9bff", text: "#7e22ce" };
 
 function PageSection({
   id,
+  theme,
   eyebrow,
-  eyebrowColor,
   title,
   subtitle,
   className = "",
   children,
 }: {
   id?: string;
+  theme: Theme;
   eyebrow?: string;
-  eyebrowColor?: string;
   title?: string;
   subtitle?: string;
   className?: string;
   children?: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20 ${className}`}>
+    <section
+      id={id}
+      data-accent-color={theme.color}
+      data-accent-glow={theme.glow}
+      data-accent-text={theme.text}
+      className={`mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20 ${className}`}
+    >
       {eyebrow && (
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: eyebrowColor }}>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: theme.text }}>
           {eyebrow}
         </h2>
       )}
@@ -55,11 +65,11 @@ function PageSection({
 const FEATURES = [
   {
     title: "Individually Addressable LEDs",
-    body: "Every single bulb on your home can be its own color, so you can build patterns, animations, and effects — not just one flat color across the whole run.",
+    body: "Every single bulb on your home can be its own color, so you can build patterns, animations, and effects - not just one flat color across the whole run.",
   },
   {
     title: "Full Smart Home Control",
-    body: "Schedule shows, set timers, and change colors from the app, from anywhere — no ladder, no remote to dig out of a drawer.",
+    body: "Schedule shows, set timers, and change colors from the app, from anywhere - no ladder, no remote to dig out of a drawer.",
   },
   {
     title: "Nearly Invisible By Day, Brilliant By Night",
@@ -67,7 +77,53 @@ const FEATURES = [
   },
   {
     title: "Weatherproof & Built to Last",
-    body: "Rated for extreme temperatures and sealed against rain, snow, wind, and UV — built to run outdoors through Utah's full four seasons.",
+    body: "Rated for extreme temperatures and sealed against rain, snow, wind, and UV - built to run outdoors through Utah's full four seasons.",
+  },
+];
+
+const HIGHLIGHTS = [
+  {
+    title: "Dimmable & Programmable",
+    body: "Customize brightness and schedule lights to run automatically based on sunset and sunrise.",
+  },
+  {
+    title: "Multiple Color Options",
+    body: "RGB + true warm white LEDs give you vibrant holiday colors and a clean, classic white - not a tinted RGB imitation.",
+  },
+  {
+    title: "Seamless Installation",
+    body: "A color-matched, powder-coated aluminum track keeps every wire hidden, so the system disappears into your trim.",
+  },
+  {
+    title: "Warranty Backed",
+    body: "Every install is backed by a materials and workmanship warranty covering both the lights and the installation itself.",
+  },
+];
+
+const APPLICATIONS = [
+  {
+    title: "Holidays",
+    body: "Program festive displays for Christmas, Halloween, the 4th of July, Valentine's Day, Diwali, Hanukkah, and more.",
+  },
+  {
+    title: "Parties & Special Occasions",
+    body: "Set the mood for birthdays, anniversaries, weddings, or graduation celebrations with custom colors and animations.",
+  },
+  {
+    title: "Security & Safety",
+    body: "Light up pathways, driveways, and dark corners to improve visibility around your property at night.",
+  },
+  {
+    title: "Game Days & Sporting Events",
+    body: "Show team spirit by lighting up your home in your favorite team's colors for college, pro, or local games.",
+  },
+  {
+    title: "Everyday Ambiance",
+    body: "Use soft white or warm tones for architectural accent lighting - perfect for daily curb appeal, not just holidays.",
+  },
+  {
+    title: "Awareness Campaigns",
+    body: "Support causes like breast cancer awareness (pink), autism awareness (blue), or other charitable events.",
   },
 ];
 
@@ -78,11 +134,11 @@ const TECH = [
   },
   {
     title: "Individually Addressable",
-    body: "Each bulb displays its own color independently — that's what makes patterns, animations, and dynamic effects possible.",
+    body: "Each bulb displays its own color independently - that's what makes patterns, animations, and dynamic effects possible.",
   },
   {
     title: "Smartphone App Control",
-    body: "Choose from preset themes or design your own custom looks and save them — all from your phone.",
+    body: "Choose from preset themes or design your own custom looks and save them - all from your phone.",
   },
   {
     title: "Smart Scheduling",
@@ -97,15 +153,15 @@ const BENEFITS = [
   },
   {
     title: "Safer",
-    body: "No extension cords across the yard, no overloaded outlets, no risk of a fall — the wiring is sealed and permanent.",
+    body: "No extension cords across the yard, no overloaded outlets, no risk of a fall - the wiring is sealed and permanent.",
   },
   {
     title: "Versatile",
-    body: "Red and green for Christmas, pastels for Easter, red-white-and-blue for the Fourth, orange and purple for Halloween — one system, every occasion.",
+    body: "Red and green for Christmas, pastels for Easter, red-white-and-blue for the Fourth, orange and purple for Halloween - one system, every occasion.",
   },
   {
     title: "Home Value",
-    body: "A clean, well-lit exterior is a visible upgrade — the kind buyers and neighbors both notice.",
+    body: "A clean, well-lit exterior is a visible upgrade - the kind buyers and neighbors both notice.",
   },
   {
     title: "Long-Term Savings",
@@ -114,10 +170,10 @@ const BENEFITS = [
 ];
 
 const THEMES = [
-  { emoji: "🎄", name: "Christmas", body: "Classic red & green patterns and animated displays." },
-  { emoji: "🎃", name: "Halloween", body: "Spooky orange & purple effects and eerie animations." },
-  { emoji: "💝", name: "Valentine's", body: "Romantic pinks, reds, and soft white glows." },
-  { emoji: "🏈", name: "Game Day", body: "Your team's colors, pulsing during the big game." },
+  { Icon: TreePine, color: "#15803d", name: "Christmas", body: "Classic red & green patterns and animated displays." },
+  { Icon: Ghost, color: "#ea580c", name: "Halloween", body: "Spooky orange & purple effects and eerie animations." },
+  { Icon: Heart, color: "#dc2626", name: "Valentine's", body: "Romantic pinks, reds, and soft white glows." },
+  { Icon: Trophy, color: "#1d4ed8", name: "Game Day", body: "Your team's colors, pulsing during the big game." },
 ];
 
 const COMPARISON = [
@@ -138,12 +194,12 @@ const PROCESS = [
   {
     step: "2",
     title: "Design & Quote",
-    body: "You get a custom lighting plan and a detailed quote — no hidden costs, no surprises.",
+    body: "You get a custom lighting plan and a detailed quote - no hidden costs, no surprises.",
   },
   {
     step: "3",
     title: "Professional Install",
-    body: "We mount the track, run the hidden wiring, and set up your app — typically in a single day.",
+    body: "We mount the track, run the hidden wiring, and set up your app - typically in a single day.",
   },
   {
     step: "4",
@@ -181,7 +237,7 @@ const SPECIALTIES = [
   },
   {
     title: "Architectural Accents",
-    body: "Highlight columns, gables, and trim year-round with a warm, subtle glow — not just for the holidays.",
+    body: "Highlight columns, gables, and trim year-round with a warm, subtle glow - not just for the holidays.",
   },
   {
     title: "Tree Lighting",
@@ -190,30 +246,54 @@ const SPECIALTIES = [
 ];
 
 const SHOWCASE_LOOKS = [
-  { name: "Classic Christmas", colors: ["#ff4136", "#2ecc71", "#ffc93c"] },
-  { name: "Everyday Warm White", colors: ["#ffe1a8", "#ffc93c"] },
+  { name: "Classic Christmas", colors: ["#ff4136", "#2ecc71", "#ffc93c"], photo: "/photos/house-aerial-rgb.jpg" },
+  {
+    name: "Everyday Warm White",
+    colors: ["#ffe1a8", "#ffc93c"],
+    photo: "/photos/house-victorian-warm.jpg",
+  },
   { name: "Halloween Glow", colors: ["#ff8a00", "#a855f7"] },
   { name: "Patriotic", colors: ["#ff4136", "#eaf6ff", "#3b82f6"] },
 ];
 
-function ShowcaseCard({ name, colors }: { readonly name: string; readonly colors: string[] }) {
+function ShowcaseCard({
+  name,
+  colors,
+  photo,
+}: {
+  readonly name: string;
+  readonly colors: string[];
+  readonly photo?: string;
+}) {
   const roofGradient = `linear-gradient(90deg, ${colors.join(", ")})`;
   return (
     <div className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
       <div className="relative flex h-40 items-end justify-center overflow-hidden bg-[#050507] px-8">
-        <div
-          className="absolute top-6 h-14 w-[85%] rounded-full opacity-30 blur-2xl"
-          style={{ background: roofGradient }}
-        />
-        <div
-          className="relative h-24 w-full max-w-[200px] bg-[#15151a]"
-          style={{ clipPath: "polygon(50% 0%, 100% 38%, 88% 38%, 88% 100%, 12% 100%, 12% 38%, 0% 38%)" }}
-        >
-          <div
-            className="absolute inset-x-0 top-0 h-[3px] rounded-full"
-            style={{ background: roofGradient, boxShadow: `0 0 12px 2px ${colors[0]}99` }}
+        {photo ? (
+          <Image
+            src={photo}
+            alt={`House exterior with permanent LED lighting in the ${name} look`}
+            fill
+            sizes="(min-width: 1024px) 22vw, 90vw"
+            className="object-cover opacity-90"
           />
-        </div>
+        ) : (
+          <>
+            <div
+              className="absolute top-6 h-14 w-[85%] rounded-full opacity-30 blur-2xl"
+              style={{ background: roofGradient }}
+            />
+            <div
+              className="relative h-24 w-full max-w-[200px] bg-[#15151a]"
+              style={{ clipPath: "polygon(50% 0%, 100% 38%, 88% 38%, 88% 100%, 12% 100%, 12% 38%, 0% 38%)" }}
+            >
+              <div
+                className="absolute inset-x-0 top-0 h-[3px] rounded-full"
+                style={{ background: roofGradient, boxShadow: `0 0 12px 2px ${colors[0]}99` }}
+              />
+            </div>
+          </>
+        )}
       </div>
       <p className="px-4 py-3 text-sm font-semibold text-black">{name}</p>
     </div>
@@ -224,12 +304,12 @@ export default function PermanentChristmasLightsPage() {
   return (
     <main className="flex-1 font-sans">
       {/* Hero */}
-      <PageSection className="pt-40 sm:pt-44">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED }}>
+      <PageSection theme={RED} className="pt-40 sm:pt-44">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.text }}>
           Permanent Christmas Lights
         </p>
         <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
-          Switch between accent lighting for nightly use and holiday lighting for any occasion — with the tap of a
+          Switch between accent lighting for nightly use and holiday lighting for any occasion - with the tap of a
           button.
         </h1>
         <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -253,7 +333,7 @@ export default function PermanentChristmasLightsPage() {
       <PageSection
         id="what-is-it"
         eyebrow="What Are Permanent Christmas Lights?"
-        eyebrowColor={GOLD}
+        theme={GOLD}
         title="One system, installed once, that runs every night of the year."
       >
         <p className="max-w-3xl text-black">
@@ -262,12 +342,12 @@ export default function PermanentChristmasLightsPage() {
           January, permanent lights are discreetly mounted along your roofline, soffits, and architectural features
           where they blend seamlessly into your home&apos;s exterior. When they&apos;re off, they&apos;re virtually
           invisible. When they&apos;re on, they transform your home with a brilliant, fully customizable color
-          display — any night, any holiday, any occasion.
+          display - any night, any holiday, any occasion.
         </p>
       </PageSection>
 
       {/* Features */}
-      <PageSection eyebrow="Product Features" eyebrowColor={GREEN}>
+      <PageSection eyebrow="Product Features" theme={GREEN}>
         <div className="grid gap-6 sm:grid-cols-2">
           {FEATURES.map((f) => (
             <div key={f.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
@@ -278,11 +358,27 @@ export default function PermanentChristmasLightsPage() {
         </div>
       </PageSection>
 
+      {/* Product highlights */}
+      <PageSection
+        eyebrow="Product Highlights"
+        theme={RED}
+        title="Knox Lighting installs the highest-quality permanent holiday lights."
+      >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {HIGHLIGHTS.map((h) => (
+            <div key={h.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
+              <h3 className="text-base font-semibold text-black">{h.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-black">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </PageSection>
+
       {/* Technology */}
       <PageSection
         id="technology"
         eyebrow="The Technology"
-        eyebrowColor={BLUE}
+        theme={BLUE}
         title="How permanent Christmas lights work"
         subtitle="Our system uses commercial-grade LED bulbs housed in a sleek aluminum track that mounts under your roofline or along architectural features. Each bulb can display millions of colors and is individually addressable, meaning you can create patterns, animations, and effects."
       >
@@ -306,9 +402,9 @@ export default function PermanentChristmasLightsPage() {
       {/* Why go permanent */}
       <PageSection
         eyebrow="Why Go Permanent?"
-        eyebrowColor={PURPLE}
+        theme={PURPLE}
         title="Never climb a ladder for holiday lights again."
-        subtitle="Convenience is just the start. Permanent Christmas lights are also safer, more versatile, and — over time — often cheaper than buying and hanging traditional lights every year."
+        subtitle="Convenience is just the start. Permanent Christmas lights are also safer, more versatile, and - over time - often cheaper than buying and hanging traditional lights every year."
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {BENEFITS.map((b) => (
@@ -320,8 +416,24 @@ export default function PermanentChristmasLightsPage() {
         </div>
       </PageSection>
 
+      {/* Applications */}
+      <PageSection
+        eyebrow="Applications"
+        theme={BLUE}
+        title="One system, built for more than just Christmas."
+      >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {APPLICATIONS.map((a) => (
+            <div key={a.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
+              <h3 className="text-base font-semibold text-black">{a.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-black">{a.body}</p>
+            </div>
+          ))}
+        </div>
+      </PageSection>
+
       {/* Why choose Knox */}
-      <PageSection eyebrow="Why Choose Knox Lighting" eyebrowColor={RED} title="Our promise on every install.">
+      <PageSection eyebrow="Why Choose Knox Lighting" theme={RED} title="Our promise on every install.">
         <div className="grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl border border-black/10 bg-neutral-50 p-6 text-center">
             <p className="text-4xl font-bold text-black">3</p>
@@ -337,21 +449,26 @@ export default function PermanentChristmasLightsPage() {
           </div>
         </div>
         <p className="mt-4 max-w-2xl text-xs text-black/60">
-          Warranty terms vary by package — your quote will spell out exactly what&apos;s covered.
+          Warranty terms vary by package - your quote will spell out exactly what&apos;s covered.
         </p>
       </PageSection>
 
       {/* Color customization */}
       <PageSection
         eyebrow="Customization"
-        eyebrowColor={GOLD}
+        theme={GOLD}
         title="16 million+ colors, hundreds of preset themes."
         subtitle="With over 16 million color options per bulb, your creativity is the limit. The app includes preset themes for every holiday, plus the ability to build, save, and switch between your own custom looks."
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {THEMES.map((t) => (
             <div key={t.name} className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
-              <span className="text-3xl">{t.emoji}</span>
+              <span
+                className="flex h-11 w-11 items-center justify-center rounded-full"
+                style={{ backgroundColor: `${t.color}1a` }}
+              >
+                <t.Icon size={22} color={t.color} strokeWidth={2} />
+              </span>
               <h3 className="mt-3 text-base font-semibold text-black">{t.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-black">{t.body}</p>
             </div>
@@ -362,7 +479,7 @@ export default function PermanentChristmasLightsPage() {
       {/* Comparison */}
       <PageSection
         eyebrow="Comparison"
-        eyebrowColor={GREEN}
+        theme={GREEN}
         title="Permanent vs. traditional Christmas lights"
         subtitle="Traditional lights cost less upfront, but come with hidden costs every year: your time to install and remove them, replacement bulbs and strands, and the physical toll of ladder work."
       >
@@ -389,7 +506,7 @@ export default function PermanentChristmasLightsPage() {
       </PageSection>
 
       {/* Process */}
-      <PageSection eyebrow="How It Works" eyebrowColor={BLUE} title="Installation process">
+      <PageSection eyebrow="How It Works" theme={BLUE} title="Installation process">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p) => (
             <div key={p.step} className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
@@ -417,9 +534,9 @@ export default function PermanentChristmasLightsPage() {
       <PageSection
         id="pricing"
         eyebrow="Investment"
-        eyebrowColor={PURPLE}
+        theme={PURPLE}
         title="How much do permanent Christmas lights cost?"
-        subtitle="Most systems run $2,000–$8,000+ depending on your home size, roofline complexity, and linear footage — priced from the same $18–$24/ft rates as our packages on the homepage."
+        subtitle="Most systems run $2,000–$8,000+ depending on your home size, roofline complexity, and linear footage - priced from the same $18–$24/ft rates as our packages on the homepage."
       >
         <div className="grid gap-6 lg:grid-cols-3">
           {PRICING.map((tier) => (
@@ -466,9 +583,9 @@ export default function PermanentChristmasLightsPage() {
       </PageSection>
 
       {/* Dual mode banner */}
-      <PageSection>
+      <PageSection theme={RED}>
         <div className="rounded-2xl border border-black/10 bg-neutral-50 p-10 text-center sm:p-14">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED }}>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.text }}>
             Switch between
           </p>
           <p className="mt-3 text-2xl font-bold text-black sm:text-3xl">
@@ -485,12 +602,12 @@ export default function PermanentChristmasLightsPage() {
       </PageSection>
 
       {/* FAQ */}
-      <PageSection eyebrow="Frequently Asked Questions" eyebrowColor={GOLD} title="Questions, answered.">
+      <PageSection eyebrow="Frequently Asked Questions" theme={GOLD} title="Questions, answered.">
         <FaqAccordion />
       </PageSection>
 
       {/* Specialties */}
-      <PageSection eyebrow="Our Specialties" eyebrowColor={GREEN} title="Beyond holiday lighting.">
+      <PageSection eyebrow="Our Specialties" theme={GREEN} title="Beyond holiday lighting.">
         <div className="grid gap-6 lg:grid-cols-3">
           {SPECIALTIES.map((s) => (
             <div key={s.title} className="rounded-2xl border border-black/10 bg-neutral-50 p-7">
@@ -502,10 +619,10 @@ export default function PermanentChristmasLightsPage() {
       </PageSection>
 
       {/* Showcase */}
-      <PageSection eyebrow="Look Inspiration" eyebrowColor={BLUE} title="A few of the looks you can switch between.">
+      <PageSection eyebrow="Look Inspiration" theme={BLUE} title="A few of the looks you can switch between.">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {SHOWCASE_LOOKS.map((look) => (
-            <ShowcaseCard key={look.name} name={look.name} colors={look.colors} />
+            <ShowcaseCard key={look.name} name={look.name} colors={look.colors} photo={look.photo} />
           ))}
         </div>
         <p className="mt-6 text-sm text-black">
@@ -518,7 +635,7 @@ export default function PermanentChristmasLightsPage() {
       </PageSection>
 
       {/* Final CTA */}
-      <PageSection className="pb-32 text-center">
+      <PageSection theme={RED} className="pb-32 text-center">
         <p className="mx-auto max-w-xl text-2xl font-bold text-black sm:text-3xl">
           Ready to stop climbing the ladder?
         </p>

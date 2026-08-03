@@ -9,7 +9,12 @@ import {
   useRef,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 import { SECTIONS, type SectionId } from "@/lib/sections";
+
+type Accent = { color: string; glow: string; text: string };
+
+const DEFAULT_ACCENT: Accent = { color: SECTIONS[0].color, glow: SECTIONS[0].glow, text: SECTIONS[0].text };
 
 type SectionColorContextValue = {
   activeId: SectionId;
@@ -31,32 +36,49 @@ export function useSectionColor() {
 
 export function SectionColorProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [activeId, setActiveId] = useState<SectionId>(SECTIONS[0].id);
-  const visibility = useRef<Map<SectionId, number>>(new Map());
+  const [accent, setAccent] = useState<Accent>(DEFAULT_ACCENT);
+  const visibility = useRef<Map<Element, number>>(new Map());
+  const pathname = usePathname();
 
   useEffect(() => {
-    const elements = SECTIONS.map((s) => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => Boolean(el)
-    );
+    visibility.current.clear();
+
+    // Any element on any page can opt into the scroll-color effect by carrying
+    // these data attributes - not just the fixed homepage SECTIONS list.
+    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-accent-color]"));
+
+    if (elements.length === 0) {
+      // No color sections on this page - fall back to the default brand color
+      // instead of leaving it frozen on whatever was last active before navigating here.
+      const frame = requestAnimationFrame(() => setAccent(DEFAULT_ACCENT));
+      return () => cancelAnimationFrame(frame);
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          const id = entry.target.id as SectionId;
-          visibility.current.set(id, entry.intersectionRatio);
+          visibility.current.set(entry.target, entry.intersectionRatio);
         }
 
-        let bestId: SectionId | null = null;
+        let best: HTMLElement | null = null;
         let bestRatio = 0;
-        for (const section of SECTIONS) {
-          const ratio = visibility.current.get(section.id) ?? 0;
+        for (const el of elements) {
+          const ratio = visibility.current.get(el) ?? 0;
           if (ratio > bestRatio) {
             bestRatio = ratio;
-            bestId = section.id;
+            best = el;
           }
         }
 
-        if (bestId) {
-          setActiveId(bestId);
+        if (best) {
+          const { accentColor, accentGlow, accentText } = best.dataset;
+          if (accentColor && accentGlow && accentText) {
+            setAccent({ color: accentColor, glow: accentGlow, text: accentText });
+          }
+          const section = SECTIONS.find((s) => s.id === best!.id);
+          if (section) {
+            setActiveId(section.id);
+          }
         }
       },
       {
@@ -67,19 +89,14 @@ export function SectionColorProvider({ children }: Readonly<{ children: React.Re
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
-
-  const active = useMemo(
-    () => SECTIONS.find((s) => s.id === activeId) ?? SECTIONS[0],
-    [activeId]
-  );
+  }, [pathname]);
 
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty("--accent", active.color);
-    root.style.setProperty("--accent-glow", active.glow);
-    root.style.setProperty("--accent-text", active.text);
-  }, [active]);
+    root.style.setProperty("--accent", accent.color);
+    root.style.setProperty("--accent-glow", accent.glow);
+    root.style.setProperty("--accent-text", accent.text);
+  }, [accent]);
 
   const scrollTo = useCallback((id: SectionId) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -88,12 +105,12 @@ export function SectionColorProvider({ children }: Readonly<{ children: React.Re
   const value = useMemo(
     () => ({
       activeId,
-      color: active.color,
-      glow: active.glow,
-      textColor: active.text,
+      color: accent.color,
+      glow: accent.glow,
+      textColor: accent.text,
       scrollTo,
     }),
-    [activeId, active, scrollTo]
+    [activeId, accent, scrollTo]
   );
 
   return (

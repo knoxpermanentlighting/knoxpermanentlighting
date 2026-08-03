@@ -46,7 +46,7 @@ export function ContactSection() {
           </p>
           <p className="mt-4 max-w-md text-black">
             Tell us about your home and we&apos;ll follow up with a free,
-            no-pressure quote &mdash; usually within one business day.
+            no-pressure quote - usually within one business day.
           </p>
 
           <dl className="mt-10 space-y-4 text-sm text-black">

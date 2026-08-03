@@ -9,7 +9,7 @@ export const FAQS: Faq[] = [
   {
     question: "Can the lights do a true warm white?",
     answer:
-      "Yes — alongside millions of RGB colors, the system includes a dedicated warm white channel for a clean, classic glow that doesn't look tinted or washed out like some RGB-only \"white\" settings.",
+      "Yes - alongside millions of RGB colors, the system includes a dedicated warm white channel for a clean, classic glow that doesn't look tinted or washed out like some RGB-only \"white\" settings.",
   },
   {
     question: "How much electricity does the system use?",
@@ -24,7 +24,7 @@ export const FAQS: Faq[] = [
   {
     question: "What's the warranty?",
     answer:
-      "Every install includes a materials warranty on the track and bulbs, plus a labor/service warranty on the installation itself. Exact terms depend on your package — we'll spell it out in your quote.",
+      "Every install includes a materials warranty on the track and bulbs, plus a labor/service warranty on the installation itself. Exact terms depend on your package - we'll spell it out in your quote.",
   },
   {
     question: "Where do the lights get installed?",
@@ -39,7 +39,7 @@ export const FAQS: Faq[] = [
   {
     question: "Can I save schedules and timers?",
     answer:
-      "Yes — set the lights to turn on automatically at sunset, run a specific show at a set time, or turn off automatically at a set hour.",
+      "Yes - set the lights to turn on automatically at sunset, run a specific show at a set time, or turn off automatically at a set hour.",
   },
   {
     question: "Where can I control the lights from?",
@@ -49,7 +49,7 @@ export const FAQS: Faq[] = [
   {
     question: "How long does installation take?",
     answer:
-      "Most single-family homes are completed in a single day. Larger or more complex rooflines may take longer — we'll give you a time estimate with your quote.",
+      "Most single-family homes are completed in a single day. Larger or more complex rooflines may take longer - we'll give you a time estimate with your quote.",
   },
   {
     question: "Can you see the track from the street during the day?",
@@ -59,6 +59,6 @@ export const FAQS: Faq[] = [
   {
     question: "How long does the system last?",
     answer:
-      "The LEDs are rated for tens of thousands of hours of use — with typical nightly use, that translates to years of service before any bulb-level maintenance is needed.",
+      "The LEDs are rated for tens of thousands of hours of use - with typical nightly use, that translates to years of service before any bulb-level maintenance is needed.",
   },
 ];

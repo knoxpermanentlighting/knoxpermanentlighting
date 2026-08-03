@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LOCATIONS } from "@/lib/locations";
 import { FAQS } from "@/lib/faqs";
 import { FaqAccordion } from "@/components/faq-accordion";
 
-const RED = "#dc2626";
-const GOLD = "#b45309";
-const GREEN = "#15803d";
-const BLUE = "#1d4ed8";
+type Theme = { color: string; glow: string; text: string };
+
+const RED: Theme = { color: "#ff4136", glow: "#ff7a70", text: "#dc2626" };
+const GOLD: Theme = { color: "#ffc93c", glow: "#ffdd85", text: "#b45309" };
+const GREEN: Theme = { color: "#2ecc71", glow: "#6fe3a4", text: "#15803d" };
+const BLUE: Theme = { color: "#3b82f6", glow: "#7fabff", text: "#1d4ed8" };
+const PURPLE: Theme = { color: "#a855f7", glow: "#cf9bff", text: "#7e22ce" };
 
 const BENEFITS = [
   { title: "No Ladders", body: "Once it's installed, you never climb a ladder to hang or take down lights again." },
-  { title: "Safer", body: "No extension cords across the yard and no risk of a fall — the wiring is sealed and permanent." },
+  { title: "Safer", body: "No extension cords across the yard and no risk of a fall - the wiring is sealed and permanent." },
   {
     title: "Versatile",
-    body: "Red and green for Christmas, red-white-and-blue for the Fourth, orange and purple for Halloween — one system, every occasion.",
+    body: "Red and green for Christmas, red-white-and-blue for the Fourth, orange and purple for Halloween - one system, every occasion.",
   },
   { title: "Home Value", body: "A clean, well-lit exterior is a visible upgrade neighbors and buyers both notice." },
 ];
@@ -42,7 +46,7 @@ export async function generateMetadata({
   if (!location) return {};
 
   const title = `Permanent Christmas Lights in ${location.name}, UT | Knox Lighting`;
-  const description = `Professional permanent LED lighting for homes in ${location.name}, Utah. One install, every color, every holiday — controlled from your phone.`;
+  const description = `Professional permanent LED lighting for homes in ${location.name}, Utah. One install, every color, every holiday - controlled from your phone.`;
 
   return {
     title,
@@ -62,36 +66,61 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
 
   return (
     <main className="flex-1 font-sans">
-      <section className="mx-auto w-full max-w-6xl px-6 pt-40 pb-16 sm:px-8 sm:pt-44 sm:pb-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED }}>
-          {location.name}, Utah &middot; {location.county}
-        </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
-          Permanent Christmas lights for {location.name} homes.
-        </h1>
-        <p className="mt-6 max-w-xl text-lg text-black">
-          One professional LED install on your roofline, controlled from your phone — Christmas, game day, or just a
-          Tuesday. No ladders, every season.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <Link
-            href="/#contact"
-            className="rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
-            style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
-          >
-            Get a Free Quote
-          </Link>
-          <Link
-            href="/permanent-christmas-lights"
-            className="rounded-full border border-black/15 px-7 py-3.5 text-base font-semibold text-black transition-colors hover:bg-black/5"
-          >
-            See Full Guide
-          </Link>
+      <section
+        data-accent-color={RED.color}
+        data-accent-glow={RED.glow}
+        data-accent-text={RED.text}
+        className="mx-auto w-full max-w-6xl px-6 pt-40 pb-16 sm:px-8 sm:pt-44 sm:pb-20"
+      >
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.text }}>
+              {location.name}, Utah &middot; {location.county}
+            </p>
+            <h1 className="mt-3 max-w-xl text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl">
+              Permanent Christmas lights for {location.name} homes.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-black">
+              One professional LED install on your roofline, controlled from your phone - Christmas, game day, or
+              just a Tuesday. No ladders, every season.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                href="/#contact"
+                className="rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
+                style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
+              >
+                Get a Free Quote
+              </Link>
+              <Link
+                href="/permanent-christmas-lights"
+                className="rounded-full border border-black/15 px-7 py-3.5 text-base font-semibold text-black transition-colors hover:bg-black/5"
+              >
+                See Full Guide
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative aspect-[5/4] w-full overflow-hidden rounded-3xl shadow-2xl">
+            <Image
+              src="/photos/house-victorian-color.jpg"
+              alt={`A home exterior with permanent lighting, representing installs near ${location.name}, Utah`}
+              fill
+              priority
+              sizes="(min-width: 1024px) 42vw, 90vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+      <section
+        data-accent-color={GOLD.color}
+        data-accent-glow={GOLD.glow}
+        data-accent-text={GOLD.text}
+        className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
+      >
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD.text }}>
           Why {location.name} Homeowners Choose Permanent
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -104,8 +133,13 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GREEN }}>
+      <section
+        data-accent-color={GREEN.color}
+        data-accent-glow={GREEN.glow}
+        data-accent-text={GREEN.text}
+        className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
+      >
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GREEN.text }}>
           Pricing in {location.name}
         </h2>
         <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
@@ -122,14 +156,19 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         <Link
           href="/permanent-christmas-lights#pricing"
           className="mt-6 inline-block text-sm font-semibold underline"
-          style={{ color: GREEN }}
+          style={{ color: GREEN.text }}
         >
           See full pricing breakdown &rarr;
         </Link>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: BLUE }}>
+      <section
+        data-accent-color={BLUE.color}
+        data-accent-glow={BLUE.glow}
+        data-accent-text={BLUE.text}
+        className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
+      >
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: BLUE.text }}>
           {location.name} FAQ
         </h2>
         <div className="mt-8">
@@ -137,7 +176,12 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-32 sm:px-8">
+      <section
+        data-accent-color={PURPLE.color}
+        data-accent-glow={PURPLE.glow}
+        data-accent-text={PURPLE.text}
+        className="mx-auto w-full max-w-6xl px-6 pb-32 sm:px-8"
+      >
         <div className="rounded-2xl border border-black/10 bg-neutral-50 p-10 text-center sm:p-14">
           <p className="text-2xl font-bold text-black sm:text-3xl">
             Ready to light up your {location.name} home?

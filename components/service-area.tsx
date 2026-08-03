@@ -17,8 +17,8 @@ export function ServiceArea() {
         Proudly lighting up homes along the Wasatch Front.
       </p>
       <p className="mt-4 max-w-2xl text-black">
-        Based in Utah and growing. Don&apos;t see your city? Reach out &mdash;
-        we&apos;re adding new install areas every season.
+        Based in Utah and growing. Don&apos;t see your city? Reach out - we&apos;re adding new install areas every
+        season.
       </p>
 
       <div className="mt-12 flex flex-wrap gap-3">
