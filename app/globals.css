@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060608;
+  --foreground: #f5f5f7;
+  --accent: #ff4136;
+  --accent-glow: #ff7a70;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff4136;
+}
+
+@property --accent-glow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff7a70;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition:
+    --accent 0.7s ease,
+    --accent-glow 0.7s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 999px;
+  transition: background-color 0.7s ease;
+}
+
+.accent-text {
+  color: var(--accent);
+  transition: color 0.7s ease;
+}
+
+.accent-bg {
+  background-color: var(--accent);
+  transition: background-color 0.7s ease;
+}
+
+.accent-border {
+  border-color: var(--accent);
+  transition: border-color 0.7s ease;
+}
+
+.accent-glow-shadow {
+  box-shadow: 0 0 40px 6px var(--accent-glow);
+  transition: box-shadow 0.7s ease;
+}
+
+.ambient-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      45rem 30rem at 15% 10%,
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      40rem 26rem at 85% 60%,
+      color-mix(in srgb, var(--accent-glow) 16%, transparent),
+      transparent 65%
+    );
+  transition: background-color 0.7s ease;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.twinkle {
+  animation: twinkle 2.4s ease-in-out infinite;
+}
