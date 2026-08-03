@@ -9,12 +9,13 @@ import {
   useRef,
   useState,
 } from "react";
-import { DEFAULT_COLOR, DEFAULT_GLOW, SECTIONS, type SectionId } from "@/lib/sections";
+import { SECTIONS, type SectionId } from "@/lib/sections";
 
 type SectionColorContextValue = {
   activeId: SectionId;
   color: string;
   glow: string;
+  textColor: string;
   scrollTo: (id: SectionId) => void;
 };
 
@@ -28,7 +29,7 @@ export function useSectionColor() {
   return ctx;
 }
 
-export function SectionColorProvider({ children }: { children: React.ReactNode }) {
+export function SectionColorProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [activeId, setActiveId] = useState<SectionId>(SECTIONS[0].id);
   const visibility = useRef<Map<SectionId, number>>(new Map());
 
@@ -77,6 +78,7 @@ export function SectionColorProvider({ children }: { children: React.ReactNode }
     const root = document.documentElement;
     root.style.setProperty("--accent", active.color);
     root.style.setProperty("--accent-glow", active.glow);
+    root.style.setProperty("--accent-text", active.text);
   }, [active]);
 
   const scrollTo = useCallback((id: SectionId) => {
@@ -88,6 +90,7 @@ export function SectionColorProvider({ children }: { children: React.ReactNode }
       activeId,
       color: active.color,
       glow: active.glow,
+      textColor: active.text,
       scrollTo,
     }),
     [activeId, active, scrollTo]
@@ -97,5 +100,3 @@ export function SectionColorProvider({ children }: { children: React.ReactNode }
     <SectionColorContext.Provider value={value}>{children}</SectionColorContext.Provider>
   );
 }
-
-export { DEFAULT_COLOR, DEFAULT_GLOW };

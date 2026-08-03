@@ -23,28 +23,28 @@ const STEPS = [
 ];
 
 export function HowItWorks() {
-  const { color } = useSectionColor();
+  const { color, textColor } = useSectionColor();
 
   return (
     <Section id="how-it-works">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
         How It Works
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
         Install once. Light up every season for years.
       </p>
 
       <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {STEPS.map((step, i) => (
-          <li key={step.title} className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <li key={step.title} className="relative rounded-2xl border border-black/10 bg-neutral-50 p-6">
             <span
               className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-black transition-colors duration-700"
               style={{ backgroundColor: color }}
             >
               {i + 1}
             </span>
-            <h3 className="mt-5 text-lg font-semibold text-white">{step.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/60">{step.body}</p>
+            <h3 className="mt-5 text-lg font-semibold text-black">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-black">{step.body}</p>
           </li>
         ))}
       </ol>

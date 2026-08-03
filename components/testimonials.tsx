@@ -25,14 +25,14 @@ const REVIEWS = [
 ];
 
 export function Testimonials() {
-  const { color } = useSectionColor();
+  const { color, textColor } = useSectionColor();
 
   return (
     <Section id="testimonials">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
         Reviews
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
         Trusted by homeowners across the Wasatch Front.
       </p>
 
@@ -40,17 +40,17 @@ export function Testimonials() {
         {REVIEWS.map((r) => (
           <figure
             key={r.name}
-            className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-7"
+            className="flex flex-col justify-between rounded-2xl border border-black/10 bg-neutral-50 p-7"
           >
-            <blockquote className="text-white/80">&ldquo;{r.quote}&rdquo;</blockquote>
+            <blockquote className="text-black">&ldquo;{r.quote}&rdquo;</blockquote>
             <figcaption className="mt-6 flex items-center gap-3">
               <span
                 className="h-9 w-9 shrink-0 rounded-full transition-colors duration-700"
                 style={{ backgroundColor: color, opacity: 0.85 }}
               />
               <span>
-                <span className="block text-sm font-semibold text-white">{r.name}</span>
-                <span className="block text-xs text-white/50">{r.city}</span>
+                <span className="block text-sm font-semibold text-black">{r.name}</span>
+                <span className="block text-xs text-black">{r.city}</span>
               </span>
             </figcaption>
           </figure>

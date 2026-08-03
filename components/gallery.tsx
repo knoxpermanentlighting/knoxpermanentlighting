@@ -15,7 +15,7 @@ const LOOKS = [
 function HouseCard({ name, colors }: { name: string; colors: string[] }) {
   const roofGradient = `linear-gradient(90deg, ${colors.join(", ")})`;
   return (
-    <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent">
+    <div className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
       <div className="relative flex h-48 items-end justify-center overflow-hidden bg-[#050507] px-8 pb-0">
         <div
           className="absolute top-6 h-16 w-[85%] rounded-full opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
@@ -35,7 +35,7 @@ function HouseCard({ name, colors }: { name: string; colors: string[] }) {
         </div>
       </div>
       <div className="flex items-center justify-between px-5 py-4">
-        <p className="text-sm font-semibold text-white">{name}</p>
+        <p className="text-sm font-semibold text-black">{name}</p>
         <div className="flex gap-1.5">
           {colors.map((c) => (
             <span key={c} className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: c }} />
@@ -47,17 +47,17 @@ function HouseCard({ name, colors }: { name: string; colors: string[] }) {
 }
 
 export function Gallery() {
-  const { color } = useSectionColor();
+  const { textColor } = useSectionColor();
 
   return (
     <Section id="gallery">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
         Gallery
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
         One system. Endless looks, all year.
       </p>
-      <p className="mt-4 max-w-2xl text-white/60">
+      <p className="mt-4 max-w-2xl text-black">
         A preview of looks our customers switch between with a tap — swap in
         real install photos once your project is complete.
       </p>
