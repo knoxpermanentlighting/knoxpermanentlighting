@@ -97,22 +97,6 @@ body {
   transition: background-color 0.7s ease;
 }
 
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-}
-
-.twinkle {
-  animation: twinkle 2.4s ease-in-out infinite;
-}
-
 @keyframes hl-bulb-blink {
   0% {
     fill: var(--off);
@@ -201,7 +185,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .twinkle,
   .hl-bulb,
   .hl-wire-wrap,
   .hl-hanger {

@@ -88,12 +88,12 @@ export function Services() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#contact"
+            <Link
+              href="/get-a-quote"
               className="mt-8 rounded-full border border-black/15 py-3 text-center text-sm font-semibold text-black transition-colors hover:bg-black/5"
             >
               Request This Package
-            </a>
+            </Link>
           </div>
         ))}
       </div>

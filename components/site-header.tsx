@@ -85,14 +85,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => goToSection("contact")}
+          <Link
+            href="/get-a-quote"
+            onClick={() => setMobileOpen(false)}
             className="rounded-full px-4 py-2 text-sm font-semibold text-black transition-transform hover:scale-105"
             style={{ backgroundColor: color }}
           >
             Get a Quote
-          </button>
+          </Link>
 
           <button
             type="button"

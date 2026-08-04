@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Section } from "@/components/section";
 import { useSectionColor } from "@/components/section-color-provider";
 
@@ -11,15 +12,8 @@ export function Hero() {
     <Section id="home" className="flex min-h-[92vh] flex-col justify-center pt-44 sm:pt-40">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <div className="flex flex-wrap items-center gap-3">
-            {["#ff4136", "#ffc93c", "#2ecc71", "#3b82f6", "#a855f7"].map((c) => (
-              <span
-                key={c}
-                className="twinkle h-2.5 w-2.5 rounded-full"
-                style={{ backgroundColor: c, boxShadow: `0 0 8px 2px ${c}` }}
-              />
-            ))}
-            <span className="ml-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+          <div className="flex flex-wrap items-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Serving the Wasatch Front, Utah
             </span>
           </div>
@@ -38,14 +32,13 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={() => scrollTo("contact")}
+            <Link
+              href="/get-a-quote"
               className="rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
               style={{ backgroundColor: color, boxShadow: `0 0 30px 4px ${color}55` }}
             >
               Get a Free Quote
-            </button>
+            </Link>
             <button
               type="button"
               onClick={() => scrollTo("how-it-works")}

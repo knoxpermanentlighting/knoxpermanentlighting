@@ -9,7 +9,7 @@ const COMPANY_LINKS = [
   { href: "/#gallery", label: "Gallery" },
   { href: "/#testimonials", label: "Reviews" },
   { href: "/#service-area", label: "Service Area" },
-  { href: "/#contact", label: "Get a Quote" },
+  { href: "/get-a-quote", label: "Get a Quote" },
   { href: "/permanent-christmas-lights", label: "Permanent Christmas Lights" },
 ];
 

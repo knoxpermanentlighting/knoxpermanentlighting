@@ -4,8 +4,7 @@ export type SectionId =
   | "services"
   | "gallery"
   | "testimonials"
-  | "service-area"
-  | "contact";
+  | "service-area";
 
 export type SectionMeta = {
   id: SectionId;
@@ -24,5 +23,4 @@ export const SECTIONS: SectionMeta[] = [
   { id: "gallery", label: "Gallery", color: "#3b82f6", glow: "#7fabff", text: "#1d4ed8" },
   { id: "testimonials", label: "Reviews", color: "#a855f7", glow: "#cf9bff", text: "#7e22ce" },
   { id: "service-area", label: "Service Area", color: "#ff8a00", glow: "#ffb366", text: "#c2410c" },
-  { id: "contact", label: "Get a Quote", color: "#14b8a6", glow: "#5eead4", text: "#0f766e" },
 ];

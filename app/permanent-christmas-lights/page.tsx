@@ -314,7 +314,7 @@ export default function PermanentChristmasLightsPage() {
         </h1>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
-            href="/#contact"
+            href="/get-a-quote"
             className="rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
             style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
           >
@@ -391,7 +391,7 @@ export default function PermanentChristmasLightsPage() {
           ))}
         </div>
         <Link
-          href="/#contact"
+          href="/get-a-quote"
           className="mt-8 inline-block rounded-full px-6 py-3 text-sm font-semibold text-black transition-transform hover:scale-105"
           style={{ backgroundColor: "#3b82f6" }}
         >
@@ -522,7 +522,7 @@ export default function PermanentChristmasLightsPage() {
           ))}
         </div>
         <Link
-          href="/#contact"
+          href="/get-a-quote"
           className="mt-8 inline-block rounded-full px-6 py-3 text-sm font-semibold text-black transition-transform hover:scale-105"
           style={{ backgroundColor: "#3b82f6" }}
         >
@@ -568,7 +568,7 @@ export default function PermanentChristmasLightsPage() {
                 ))}
               </ul>
               <Link
-                href="/#contact"
+                href="/get-a-quote"
                 className="mt-8 rounded-full border border-black/15 py-3 text-center text-sm font-semibold text-black transition-colors hover:bg-black/5"
               >
                 Get a Free Quote
@@ -592,7 +592,7 @@ export default function PermanentChristmasLightsPage() {
             Accent lighting for nightly use and holiday lighting for any occasion.
           </p>
           <Link
-            href="/#contact"
+            href="/get-a-quote"
             className="mt-8 inline-block rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
             style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
           >
@@ -640,7 +640,7 @@ export default function PermanentChristmasLightsPage() {
           Ready to stop climbing the ladder?
         </p>
         <Link
-          href="/#contact"
+          href="/get-a-quote"
           className="mt-8 inline-block rounded-full px-8 py-4 text-base font-semibold text-black transition-transform hover:scale-105"
           style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
         >

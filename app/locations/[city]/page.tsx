@@ -86,7 +86,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/#contact"
+                href="/get-a-quote"
                 className="rounded-full px-7 py-3.5 text-base font-semibold text-black transition-transform hover:scale-105"
                 style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
               >
@@ -187,7 +187,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
             Ready to light up your {location.name} home?
           </p>
           <Link
-            href="/#contact"
+            href="/get-a-quote"
             className="mt-8 inline-block rounded-full px-8 py-4 text-base font-semibold text-black transition-transform hover:scale-105"
             style={{ backgroundColor: "#ff4136", boxShadow: "0 0 30px 4px #ff413655" }}
           >
