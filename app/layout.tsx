@@ -4,6 +4,7 @@ import "./globals.css";
 import { SectionColorProvider } from "@/components/section-color-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ const SITE_DESCRIPTION =
   "Professional permanent LED lighting for Utah homes. Custom colors for every holiday and season, installed once and controlled from your phone. Serving the Wasatch Front.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://knoxpermanentlighting.com"),
+  metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   openGraph: {

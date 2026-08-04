@@ -129,13 +129,17 @@ export function SiteHeader() {
                       />
                     </button>
                     {isOpen && (
-                      <div className="grid grid-cols-2 gap-x-3 gap-y-1 pb-3">
+                      <div
+                        className={`grid gap-x-3 gap-y-1 pb-3 ${
+                          dropdownGroups.flatMap((group) => group.links).length > 4 ? "grid-cols-2" : "grid-cols-1"
+                        }`}
+                      >
                         {dropdownGroups.flatMap((group) => group.links).map((link) => (
                           <Link
                             key={link.href}
                             href={link.href}
                             onClick={() => setMobileOpen(false)}
-                            className="truncate rounded-lg px-2 py-1.5 text-sm text-black/70"
+                            className="rounded-lg px-2 py-1.5 text-sm leading-snug text-black/70"
                           >
                             {link.label}
                           </Link>
