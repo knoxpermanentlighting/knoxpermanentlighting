@@ -49,14 +49,14 @@ function PageSection({
       className={`mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20 ${className}`}
     >
       {eyebrow && (
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: theme.text }}>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: theme.color }}>
           {eyebrow}
         </h2>
       )}
       {title && (
-        <p className={`max-w-2xl text-3xl font-bold text-black sm:text-4xl ${eyebrow ? "mt-3" : ""}`}>{title}</p>
+        <p className={`max-w-2xl text-3xl font-bold text-white sm:text-4xl ${eyebrow ? "mt-3" : ""}`}>{title}</p>
       )}
-      {subtitle && <p className="mt-4 max-w-2xl text-black">{subtitle}</p>}
+      {subtitle && <p className="mt-4 max-w-2xl text-white/70">{subtitle}</p>}
       {children && <div className={title || subtitle ? "mt-12" : ""}>{children}</div>}
     </section>
   );
@@ -305,10 +305,10 @@ export default function PermanentChristmasLightsPage() {
     <main className="flex-1 font-sans">
       {/* Hero */}
       <PageSection theme={RED} className="pt-40 sm:pt-44">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.text }}>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.color }}>
           Permanent Christmas Lights
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
           Switch between accent lighting for nightly use and holiday lighting for any occasion - with the tap of a
           button.
         </h1>
@@ -322,7 +322,7 @@ export default function PermanentChristmasLightsPage() {
           </Link>
           <a
             href="#pricing"
-            className="rounded-full border border-black/15 px-7 py-3.5 text-base font-semibold text-black transition-colors hover:bg-black/5"
+            className="rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white/10"
           >
             See Pricing
           </a>
@@ -336,7 +336,7 @@ export default function PermanentChristmasLightsPage() {
         theme={GOLD}
         title="One system, installed once, that runs every night of the year."
       >
-        <p className="max-w-3xl text-black">
+        <p className="max-w-3xl text-white/70">
           Permanent Christmas lights are professional-grade LED lighting systems that are installed once and stay on
           your home year-round. Unlike traditional string lights that you hang each November and take down each
           January, permanent lights are discreetly mounted along your roofline, soffits, and architectural features
@@ -448,7 +448,7 @@ export default function PermanentChristmasLightsPage() {
             <p className="mt-1 text-sm text-black">Typical days to complete a full install</p>
           </div>
         </div>
-        <p className="mt-4 max-w-2xl text-xs text-black/60">
+        <p className="mt-4 max-w-2xl text-xs text-white/50">
           Warranty terms vary by package - your quote will spell out exactly what&apos;s covered.
         </p>
       </PageSection>
@@ -545,7 +545,7 @@ export default function PermanentChristmasLightsPage() {
               className="flex flex-col rounded-2xl border p-8 shadow-sm"
               style={{
                 borderColor: tier.featured ? "#a855f7" : "rgba(0,0,0,0.1)",
-                backgroundColor: tier.featured ? "#a855f712" : "#fafafa",
+                backgroundColor: tier.featured ? "#faf5ff" : "#fafafa",
               }}
             >
               {tier.featured && (
@@ -576,7 +576,7 @@ export default function PermanentChristmasLightsPage() {
             </div>
           ))}
         </div>
-        <p className="mt-6 max-w-2xl text-sm text-black">
+        <p className="mt-6 max-w-2xl text-sm text-white/70">
           This is a one-time cost for a permanent home improvement you&apos;ll use for decades. We provide a detailed
           quote after a free design consultation, so you know exactly what to expect.
         </p>
@@ -625,7 +625,7 @@ export default function PermanentChristmasLightsPage() {
             <ShowcaseCard key={look.name} name={look.name} colors={look.colors} photo={look.photo} />
           ))}
         </div>
-        <p className="mt-6 text-sm text-black">
+        <p className="mt-6 text-sm text-white/70">
           See more real install photos on our{" "}
           <Link href="/#gallery" className="font-semibold underline">
             homepage gallery
@@ -636,7 +636,7 @@ export default function PermanentChristmasLightsPage() {
 
       {/* Final CTA */}
       <PageSection theme={RED} className="pb-32 text-center">
-        <p className="mx-auto max-w-xl text-2xl font-bold text-black sm:text-3xl">
+        <p className="mx-auto max-w-xl text-2xl font-bold text-white sm:text-3xl">
           Ready to stop climbing the ladder?
         </p>
         <Link

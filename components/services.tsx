@@ -39,20 +39,20 @@ const PACKAGES = [
 ];
 
 export function Services() {
-  const { color, textColor } = useSectionColor();
+  const { color } = useSectionColor();
 
   return (
     <Section id="services">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
         Services &amp; Packages
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
         Permanent lighting built for Utah roofs and Utah winters.
       </p>
       <Link
         href="/permanent-christmas-lights"
         className="mt-3 inline-block text-sm font-semibold underline"
-        style={{ color: textColor }}
+        style={{ color }}
       >
         See full pricing, specs &amp; FAQ &rarr;
       </Link>
@@ -64,7 +64,7 @@ export function Services() {
             className="flex flex-col rounded-2xl border p-8 shadow-sm transition-colors duration-700"
             style={{
               borderColor: pkg.featured ? color : "rgba(0,0,0,0.1)",
-              backgroundColor: pkg.featured ? `${color}12` : "#fafafa",
+              backgroundColor: "#fafafa",
             }}
           >
             {pkg.featured && (

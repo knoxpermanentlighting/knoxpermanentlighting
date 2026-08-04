@@ -74,13 +74,13 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
       >
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.text }}>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: RED.color }}>
               {location.name}, Utah &middot; {location.county}
             </p>
-            <h1 className="mt-3 max-w-xl text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl">
+            <h1 className="mt-3 max-w-xl text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
               Permanent Christmas lights for {location.name} homes.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-black">
+            <p className="mt-6 max-w-xl text-lg text-white/70">
               One professional LED install on your roofline, controlled from your phone - Christmas, game day, or
               just a Tuesday. No ladders, every season.
             </p>
@@ -94,7 +94,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
               </Link>
               <Link
                 href="/permanent-christmas-lights"
-                className="rounded-full border border-black/15 px-7 py-3.5 text-base font-semibold text-black transition-colors hover:bg-black/5"
+                className="rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white/10"
               >
                 See Full Guide
               </Link>
@@ -120,7 +120,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         data-accent-text={GOLD.text}
         className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
       >
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD.text }}>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD.color }}>
           Why {location.name} Homeowners Choose Permanent
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -139,10 +139,10 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         data-accent-text={GREEN.text}
         className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
       >
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GREEN.text }}>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: GREEN.color }}>
           Pricing in {location.name}
         </h2>
-        <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
+        <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
           Priced the same $18–$24/ft as everywhere we serve.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
@@ -156,7 +156,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         <Link
           href="/permanent-christmas-lights#pricing"
           className="mt-6 inline-block text-sm font-semibold underline"
-          style={{ color: GREEN.text }}
+          style={{ color: GREEN.color }}
         >
           See full pricing breakdown &rarr;
         </Link>
@@ -168,7 +168,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         data-accent-text={BLUE.text}
         className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
       >
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: BLUE.text }}>
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: BLUE.color }}>
           {location.name} FAQ
         </h2>
         <div className="mt-8">
@@ -196,13 +196,13 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
         </div>
 
         <div className="mt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-black/40">Nearby Areas</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/40">Nearby Areas</p>
           <div className="mt-4 flex flex-wrap gap-3">
             {nearby.map((l) => (
               <Link
                 key={l.slug}
                 href={`/locations/${l.slug}`}
-                className="rounded-full border border-black/15 px-4 py-2 text-sm text-black transition-colors hover:bg-black/5"
+                className="rounded-full border border-white/20 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
               >
                 {l.name}
               </Link>

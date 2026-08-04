@@ -25,9 +25,9 @@ export function LedScrollRail() {
       className="fixed right-1.5 top-1/2 z-40 flex -translate-y-1/2 sm:right-4 md:right-6"
     >
       <div className="relative flex flex-col items-center gap-0">
-        <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-black/10" />
+        <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-white/15" />
         <div
-          className="absolute left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-black/30 to-transparent transition-[height] duration-300 ease-out"
+          className="absolute left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/50 to-transparent transition-[height] duration-300 ease-out"
           style={{ height: `${Math.max(2, progress * 100)}%`, top: 0 }}
         />
         <ul className="relative flex flex-col justify-between gap-3.5 py-1 sm:gap-6 md:gap-7">

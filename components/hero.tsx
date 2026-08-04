@@ -5,7 +5,7 @@ import { Section } from "@/components/section";
 import { useSectionColor } from "@/components/section-color-provider";
 
 export function Hero() {
-  const { color, textColor, scrollTo } = useSectionColor();
+  const { color, scrollTo } = useSectionColor();
 
   return (
     <Section id="home" className="flex min-h-[92vh] flex-col justify-center pt-44 sm:pt-40">
@@ -19,20 +19,20 @@ export function Hero() {
                 style={{ backgroundColor: c, boxShadow: `0 0 8px 2px ${c}` }}
               />
             ))}
-            <span className="ml-1 text-xs font-semibold uppercase tracking-[0.2em] text-black">
+            <span className="ml-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Serving the Wasatch Front, Utah
             </span>
           </div>
 
-          <h1 className="mt-8 max-w-xl text-5xl font-bold leading-[1.05] tracking-tight text-black sm:text-6xl">
+          <h1 className="mt-8 max-w-xl text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
             Permanent lights.
             <br />
-            <span className="transition-colors duration-700" style={{ color: textColor }}>
+            <span className="transition-colors duration-700" style={{ color }}>
               Every holiday, every color.
             </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-black sm:text-xl">
+          <p className="mt-6 max-w-xl text-lg text-white/70 sm:text-xl">
             We install professional-grade LED lighting on your roofline once - then you control it from your phone
             for Christmas, game day, birthdays, or just a Tuesday. No more ladders. No more tangled strands.
           </p>
@@ -49,13 +49,13 @@ export function Hero() {
             <button
               type="button"
               onClick={() => scrollTo("how-it-works")}
-              className="rounded-full border border-black/15 px-7 py-3.5 text-base font-semibold text-black transition-colors hover:bg-black/5"
+              className="rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               How It Works
             </button>
           </div>
 
-          <p className="mt-4 text-sm text-black">
+          <p className="mt-4 text-sm text-white/50">
             Follow the color rail on the right - it lights up as you scroll.
           </p>
         </div>

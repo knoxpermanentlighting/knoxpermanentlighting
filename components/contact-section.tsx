@@ -10,14 +10,17 @@ const inputClass =
   "rounded-lg border border-black/15 bg-white px-3.5 py-2.5 text-black placeholder-neutral-400 outline-none transition-colors focus:border-black/40";
 
 export function ContactSection() {
-  const { color, textColor } = useSectionColor();
+  const { color } = useSectionColor();
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // Capture the form element synchronously - event.currentTarget is nulled
+    // out by the DOM once the handler yields at the first `await`.
+    const form = event.currentTarget;
     setStatus("submitting");
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
     try {
@@ -28,7 +31,7 @@ export function ContactSection() {
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch {
       setStatus("error");
     }
@@ -38,20 +41,20 @@ export function ContactSection() {
     <Section id="contact" className="pb-32">
       <div className="grid gap-12 lg:grid-cols-2">
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
             Get a Quote
           </h2>
-          <p className="mt-3 max-w-md text-3xl font-bold text-black sm:text-4xl">
+          <p className="mt-3 max-w-md text-3xl font-bold text-white sm:text-4xl">
             Let&apos;s design your permanent lighting.
           </p>
-          <p className="mt-4 max-w-md text-black">
+          <p className="mt-4 max-w-md text-white/70">
             Tell us about your home and we&apos;ll follow up with a free,
             no-pressure quote - usually within one business day.
           </p>
 
-          <dl className="mt-10 space-y-4 text-sm text-black">
+          <dl className="mt-10 space-y-4 text-sm text-white/80">
             <div className="flex items-center gap-3">
-              <dt className="w-20 shrink-0 text-black">Call</dt>
+              <dt className="w-20 shrink-0 text-white/50">Call</dt>
               <dd>
                 <a href="tel:+18015550123" className="hover:underline">
                   (801) 555-0123
@@ -59,7 +62,7 @@ export function ContactSection() {
               </dd>
             </div>
             <div className="flex items-center gap-3">
-              <dt className="w-20 shrink-0 text-black">Email</dt>
+              <dt className="w-20 shrink-0 text-white/50">Email</dt>
               <dd>
                 <a href="mailto:hello@knoxpermanentlighting.com" className="hover:underline">
                   hello@knoxpermanentlighting.com
@@ -67,7 +70,7 @@ export function ContactSection() {
               </dd>
             </div>
             <div className="flex items-center gap-3">
-              <dt className="w-20 shrink-0 text-black">Area</dt>
+              <dt className="w-20 shrink-0 text-white/50">Area</dt>
               <dd>Wasatch Front, Utah</dd>
             </div>
           </dl>

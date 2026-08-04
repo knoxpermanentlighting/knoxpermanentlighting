@@ -25,14 +25,14 @@ const REVIEWS = [
 ];
 
 export function Testimonials() {
-  const { color, textColor } = useSectionColor();
+  const { color } = useSectionColor();
 
   return (
     <Section id="testimonials">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
         Reviews
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
         Trusted by homeowners across the Wasatch Front.
       </p>
 

@@ -6,17 +6,17 @@ import { useSectionColor } from "@/components/section-color-provider";
 import { LOCATIONS } from "@/lib/locations";
 
 export function ServiceArea() {
-  const { color, textColor } = useSectionColor();
+  const { color } = useSectionColor();
 
   return (
     <Section id="service-area">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: textColor }}>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em]" style={{ color }}>
         Service Area
       </h2>
-      <p className="mt-3 max-w-2xl text-3xl font-bold text-black sm:text-4xl">
+      <p className="mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
         Proudly lighting up homes along the Wasatch Front.
       </p>
-      <p className="mt-4 max-w-2xl text-black">
+      <p className="mt-4 max-w-2xl text-white/70">
         Based in Utah and growing. Don&apos;t see your city? Reach out - we&apos;re adding new install areas every
         season.
       </p>
@@ -26,8 +26,8 @@ export function ServiceArea() {
           <Link
             key={location.slug}
             href={`/locations/${location.slug}`}
-            className="rounded-full border px-4 py-2 text-sm text-black shadow-sm transition-colors duration-700 hover:opacity-75"
-            style={{ borderColor: `${color}55`, backgroundColor: `${color}14` }}
+            className="rounded-full border px-4 py-2 text-sm text-white shadow-sm transition-colors duration-700 hover:opacity-75"
+            style={{ borderColor: `${color}55`, backgroundColor: `${color}22` }}
           >
             {location.name}
           </Link>
