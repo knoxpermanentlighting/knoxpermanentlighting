@@ -1,0 +1,6 @@
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=Knox Lighting <onboarding@resend.dev>
+CONTACT_TO_EMAIL=knoxpermanentlighting@gmail.com
